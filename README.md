@@ -6,7 +6,8 @@ For cases where the result of the division was a number with decimal places,
 I ensured that it didn’t exceed two decimal places by using the function "toFixed()".  
 After the whole calculation process, I assigned the division to the emails in the list.  
 I used an iteration loop for that, inserting as key the value of each index of the array in the map and assigning the result of the division to each of them.  
-To insert the remainder left over of the division in the object, I created a random number to use as the index of the element.
+In case the remainder left is bigger than one I made a loop for distribute equally.  
+In case the remainder left over of the division is equal to one, to insert in the object, I created a random number to use as the index of the element.
 
 Running the project  
 git clone https://github.com/ClaudiaTrevisan/challengeStone  
