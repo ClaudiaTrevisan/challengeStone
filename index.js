@@ -23,20 +23,32 @@ const splittingBill = (list, emails ) =>{
         calc += list[i].price_by_unity * list[i].quantity + list[i].quantity
     };
 
-    if(calc%emails.length !== 0) rest = calc%emails.length;
-
     divisionInitial = Math.trunc(calc/emails.length) !== 0 ? Math.trunc(calc/emails.length) : calc/emails.length;
 
     divisionFinal = Number(divisionInitial.toFixed(2));
-    
+
+    if(calc%emails.length !== 0) rest = calc%emails.length;
+
     for(let email of emails){
         result[email] = divisionFinal
     };
 
-    const randomNumber = Math.floor(Math.random() * ((emails.length - 1) - 0 + 1)) + 0;
+    console.log(rest)
 
-    result[emails[randomNumber]] += rest;
-
+    if(rest > 1){
+        /**@type {string[]} */let arrayProvisory = []
+        for(let num = 0; num < rest; num++){
+            arrayProvisory.push(emails[num])
+        }
+        /**@type {number} */let divisionProvisory = rest/arrayProvisory.length
+        for(let number = 0; number < arrayProvisory.length; number++){
+            result[emails[number]] += divisionProvisory
+        }
+    }
+    if(rest === 1){
+        /**@type {number} */const randomNumber = Math.floor(Math.random() * ((emails.length - 1) - 0 + 1)) + 0;
+        result[emails[randomNumber]] += rest;
+    }
 
     return result
 };
@@ -44,8 +56,8 @@ const splittingBill = (list, emails ) =>{
 /**@type {List[]} */
 const arrayItens = [
     {item: "banana", 
-    quantity: 2, 
-    price_by_unity: 200},
+    quantity: 1, 
+    price_by_unity: 100},
     {item: "maçã",
     quantity: 2, 
     price_by_unity: 350},
@@ -91,7 +103,7 @@ const arrayItens = [
 const arrayEmails = [
     'joao@email.com', 
     'claudia@email.com', 
-    'lucas@email.com', 
+    'lucas@email.com',
     'thales@email.com', 
     'giovanna@email.com', 
     'renato@email.com', 
