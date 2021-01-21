@@ -33,8 +33,6 @@ const splittingBill = (list, emails ) =>{
         result[email] = divisionFinal
     };
 
-    console.log(rest)
-
     if(rest > 1){
         /**@type {string[]} */let arrayProvisory = []
         for(let num = 0; num < rest; num++){
